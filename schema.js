@@ -3,7 +3,7 @@ const {gql} = require("apollo-server")
 exports.typeDefs = gql`
     type Query{
         hello: String
-        products(filter: ProductsFilterInput!): [Product!]
+        products(filter: ProductsFilterInput): [Product!]
         product(id:ID!) : Product
         categories: [Category!]!
         category(id: ID!) : Category 
@@ -13,6 +13,7 @@ exports.typeDefs = gql`
          addCategory(input : AddCategoryInput): Category!
          addProduct(input : AddProductInput): Product!
          addReview(input : AddReviewInput): Review!
+         deleteCategory(id:ID!) : Boolean!
     }
 
     type Product{
