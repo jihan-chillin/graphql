@@ -9,14 +9,20 @@ exports.typeDefs = gql`
         category(id: ID!) : Category 
     }
 
+    type Mutation{
+         addCategory(input : AddCategoryInput): Category!
+         addProduct(input : AddProductInput): Product!
+         addReview(input : AddReviewInput): Review!
+    }
+
     type Product{
         id: ID! 
-        name: String
-        description: String
-        image: String
-        quantity: Int
-        price: Float
-        onSale: Boolean
+        name: String!
+        description: String!
+        image: String!
+        quantity: Int!
+        price: Float!
+        onSale: Boolean!
         category: Category
         reviews: [Review]!
     }
@@ -38,5 +44,27 @@ exports.typeDefs = gql`
     input ProductsFilterInput{
         onSale: Boolean
         avgRating: Int
+    }
+
+    input AddCategoryInput {
+        name : String
+    }
+
+    input AddProductInput{
+        name: String!
+        description: String!
+        image: String!
+        quantity: Int!
+        price: Float!
+        onSale: Boolean!
+        categoryId: String!
+    }
+
+    input AddReviewInput {
+        date: String!
+        title: String!
+        comment: String!
+        rating: Int!
+        productId: ID!
     }
 `
